@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('blog');
+const sorted = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Blog" description="All posts on AI tools and tutorials for beginners.">
+  <h1 class="text-3xl font-semibold mb-8">All posts</h1>
+  <ul class="flex flex-col gap-8 list-none p-0">
+    {sorted.map(post => (
+      <li>
+        <a href={`/blog/${post.id}`} class="no-underline group">
+          <p class="text-sm text-gray-400 mb-1">{post.data.date.toDateString()}</p>
+          <h2 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 mb-1">{post.data.title}</h2>
+          <p class="text-gray-600 text-sm">{post.data.description}</p>
+          <div class="flex gap-2 mt-2">
+            {post.data.tags.map(tag => (
+              <span class="text-xs bg-gray-100 text-gray-500 px-2 py-1 rounded-full">#{tag}</span>
+            ))}
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

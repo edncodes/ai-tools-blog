@@ -1,0 +1,38 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const { title, description } = Astro.props;
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url.pathname;;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:title" content={`${title} | AI Tools Blog`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${title} | AI Tools Blog`} />
+    <meta name="twitter:description" content={description} />
+
+    <title>{title} | AI Tools Blog</title>
+
+    <style>
+      @import "tailwindcss";
+      @plugin "@tailwindcss/typography";
+    </style>
+  </head>
+  <body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen">
+    <Header />
+    <main class="max-w-3xl mx-auto px-4 py-10 w-full flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
