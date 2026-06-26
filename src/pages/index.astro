@@ -1,7 +1,91 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const latest = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
+
+const categories = ['AI Tools', 'Web Development', 'Tutorials', 'Productivity'];
 ---
-<BaseLayout title="Home" description="Helping beginners get the most out of AI tools — for free.">
-  <h1>AI Tools & Tutorials</h1>
-  <p>Practical guides, honest reviews, and step-by-step tutorials on the best AI tools — written for beginners.</p>
+<BaseLayout title="Home" description="Practical AI and software development tutorials for beginners. Learn what actually works, step by step.">
+
+  <section class="py-16 text-center border-b border-gray-100">
+    <span class="text-xs font-medium tracking-widest text-blue-500 uppercase">AI & Software Dev Tutorials</span>
+    <h1 class="mt-4 text-4xl font-semibold text-gray-900 leading-tight">
+      Learn to code and use AI.<br />From zero to real skills.
+    </h1>
+    <p class="mt-4 text-gray-500 text-lg max-w-xl mx-auto">
+      Step-by-step tutorials on AI tools and software development for beginners. No jargon, no fluff — just what works.
+    </p>
+    <div class="mt-8 flex gap-4 justify-center flex-wrap">
+      <a href="/blog" class="bg-gray-900 text-white text-sm px-6 py-3 rounded-full hover:bg-gray-700 transition-colors no-underline">
+        Read the blog
+      </a>
+      <a href="/about" class="text-sm px-6 py-3 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-50 transition-colors no-underline">
+        About this blog
+      </a>
+    </div>
+  </section>
+
+  <section class="py-10 border-b border-gray-100">
+    <h2 class="text-sm font-medium text-gray-400 uppercase tracking-widest mb-4">Browse by topic</h2>
+    <div class="flex flex-wrap gap-3">
+      {categories.map(cat => (
+        <a href={`/categories/${cat.toLowerCase().replace(/ /g, '-')}`} class="text-sm px-4 py-2 rounded-full border border-gray-200 text-gray-600 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all no-underline">
+          {cat}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-14">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-xl font-semibold text-gray-900">Latest posts</h2>
+      <a href="/blog" class="text-sm text-blue-500 hover:underline no-underline">View all</a>
+    </div>
+    <div class="flex flex-col gap-4">
+      {latest.map(post => (
+        <a href={`/blog/${post.id}`} class="group no-underline flex gap-6 items-start p-5 rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all">
+          <div class="flex-1">
+            <div class="flex gap-2 mb-2 flex-wrap">
+              <span class="text-xs bg-blue-50 text-blue-500 px-2 py-1 rounded-full">{post.data.category}</span>
+              <span class="text-xs text-gray-400">{post.data.readTime}</span>
+            </div>
+            <h3 class="text-base font-semibold text-gray-900 group-hover:text-blue-600 leading-snug mb-1">
+              {post.data.title}
+            </h3>
+            <p class="text-sm text-gray-500">{post.data.description}</p>
+            <p class="text-xs text-gray-400 mt-2">{post.data.date.toDateString()}</p>
+          </div>
+          <div class="text-gray-300 group-hover:text-blue-400 transition-colors mt-1 shrink-0">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-14 border-t border-gray-100">
+    <h2 class="text-xl font-semibold text-gray-900 mb-8">What you will find here</h2>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+      <div class="p-6 rounded-2xl bg-blue-50">
+        <div class="text-2xl mb-3">🤖</div>
+        <h3 class="font-semibold text-gray-900 mb-1">AI tool guides</h3>
+        <p class="text-sm text-gray-500">Hands-on tutorials for Claude, Notion AI, Perplexity, and more.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-purple-50">
+        <div class="text-2xl mb-3">💻</div>
+        <h3 class="font-semibold text-gray-900 mb-1">Dev tutorials</h3>
+        <p class="text-sm text-gray-500">HTML, CSS, JavaScript, and React explained from the ground up.</p>
+      </div>
+      <div class="p-6 rounded-2xl bg-green-50">
+        <div class="text-2xl mb-3">🚀</div>
+        <h3 class="font-semibold text-gray-900 mb-1">Build real things</h3>
+        <p class="text-sm text-gray-500">Every tutorial ends with something you actually built and can show people.</p>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>

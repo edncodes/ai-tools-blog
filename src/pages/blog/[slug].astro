@@ -14,14 +14,31 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 <BaseLayout title={post.data.title} description={post.data.description}>
-  <article class="prose prose-gray max-w-none">
-    <p class="text-sm text-gray-400 mb-2">{post.data.date.toDateString()}</p>
-    <h1 class="text-3xl font-semibold text-gray-900 mb-4">{post.data.title}</h1>
-    <div class="flex gap-2 mb-8">
-      {post.data.tags.map(tag => (
-        <span class="text-xs bg-gray-100 text-gray-500 px-2 py-1 rounded-full">#{tag}</span>
-      ))}
+  <article class="py-10">
+    <div class="mb-8">
+      <div class="flex gap-3 mb-4 flex-wrap items-center">
+        <span class="text-xs bg-blue-50 text-blue-500 px-3 py-1 rounded-full">{post.data.category}</span>
+        <span class="text-xs text-gray-400">{post.data.readTime}</span>
+        <span class="text-xs text-gray-400">{post.data.date.toDateString()}</span>
+      </div>
+      <h1 class="text-3xl font-semibold text-gray-900 leading-tight mb-4">{post.data.title}</h1>
+      <p class="text-lg text-gray-500 leading-relaxed">{post.data.description}</p>
+      <div class="flex gap-2 mt-4 flex-wrap">
+        {post.data.tags.map(tag => (
+          <span class="text-xs bg-gray-100 text-gray-400 px-2 py-1 rounded-full">#{tag}</span>
+        ))}
+      </div>
     </div>
-    <Content />
+    <div class="border-t border-gray-100 pt-8 prose prose-gray max-w-none
+      prose-headings:font-semibold prose-headings:text-gray-900
+      prose-p:text-gray-600 prose-p:leading-relaxed
+      prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline
+      prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded prose-code:text-sm
+      prose-pre:bg-gray-900 prose-pre:text-gray-100">
+      <Content />
+    </div>
+    <div class="mt-12 pt-8 border-t border-gray-100">
+      <a href="/blog" class="text-sm text-blue-500 hover:underline no-underline">← Back to all posts</a>
+    </div>
   </article>
 </BaseLayout>

@@ -1,7 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="About" description="Learn about this blog and why I started it.">
-  <h1>About this blog</h1>
-  <p>I'm learning AI tools from scratch and documenting everything I discover. If you're a beginner, this blog is for you — no jargon, no fluff, just what actually works.</p>
+<BaseLayout title="About" description="Learn about DevAI Tutorials and why this blog exists.">
+  <div class="py-10 max-w-2xl">
+    <span class="text-xs font-medium tracking-widest text-blue-500 uppercase">About this blog</span>
+    <h1 class="mt-4 text-3xl font-semibold text-gray-900 mb-4">Built by a learner, for learners</h1>
+    <p class="text-gray-500 mb-4 leading-relaxed">
+      This blog exists because learning AI and software development should not require a computer science degree or an expensive bootcamp. Everything here is written from the perspective of someone who learned it themselves.
+    </p>
+    <p class="text-gray-500 mb-4 leading-relaxed">
+      You will find tutorials on AI tools like Claude, Notion AI, and Perplexity — as well as software development fundamentals like HTML, CSS, JavaScript, and React. Both worlds are converging and knowing both gives you a real edge.
+    </p>
+    <p class="text-gray-500 mb-10 leading-relaxed">
+      Every post is practical. Every tutorial ends with something you actually built or learned to use. No filler, no fluff.
+    </p>
+    <div class="grid grid-cols-3 gap-4 py-8 border-t border-b border-gray-100 mb-10">
+      <div class="text-center">
+        <div class="text-2xl font-semibold text-gray-900">4+</div>
+        <div class="text-sm text-gray-400">Posts published</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-semibold text-gray-900">100%</div>
+        <div class="text-sm text-gray-400">Free content</div>
+      </div>
+      <div class="text-center">
+        <div class="text-2xl font-semibold text-gray-900">2</div>
+        <div class="text-sm text-gray-400">Topics covered</div>
+      </div>
+    </div>
+    <a href="/blog" class="bg-gray-900 text-white text-sm px-6 py-3 rounded-full hover:bg-gray-700 transition-colors no-underline inline-block">
+      Start reading
+    </a>
+  </div>
 </BaseLayout>
