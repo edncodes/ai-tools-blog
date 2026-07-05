@@ -5,6 +5,12 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://ai-tools-blog-blush.vercel.app',
+  markdown: {
+    shikiConfig: {
+      theme: "one-dark-pro",
+      wrap: false
+    }
+  },
   vite: {
     plugins: [tailwindcss()]
   },
