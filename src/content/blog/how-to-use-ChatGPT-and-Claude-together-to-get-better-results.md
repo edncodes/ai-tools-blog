@@ -55,7 +55,9 @@ What Claude is genuinely best at:
 - **Code explanations.** When Claude writes code, it explains *why* - the reasoning, the trade-offs, the potential edge cases. Better for learning, not just generating.
 - **Long document analysis.** Drop in a 50-page PDF and ask Claude to find the main arguments, contradictions, or action items. It handles this more coherently than ChatGPT at that length.
 
-![Claude interface showing the main chat window](https://cdn-public.eesel.ai/b449f812-0061-4442-addb-cf11472cec0d/4218ebea-da6f-46c3-ad0c-a268c2d0bd51/d4662636da2d4adc8b6d200cbfc80d7c.mp4)
+<video controls style="width:100%;height:auto;" title="Claude interface showing the main chat window">
+  <source src="https://cdn-public.eesel.ai/b449f812-0061-4442-addb-cf11472cec0d/4218ebea-da6f-46c3-ad0c-a268c2d0bd51/d4662636da2d4adc8b6d200cbfc80d7c.mp4" type="video/mp4">
+</video>
 
 ## How to route tasks between the two
 
