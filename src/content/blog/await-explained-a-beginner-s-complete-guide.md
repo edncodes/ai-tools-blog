@@ -1,32 +1,12 @@
 ---
-key: outputs/skills/4218ebea-da6f-46c3-ad0c-a268c2d0bd51/blog/javascript-async-await-explained/POST.md
-indexed_at: 2026-07-05T11:21:04.903849+00:00
-agent_id: 4218ebea-da6f-46c3-ad0c-a268c2d0bd51
-author: 16
-categories: ["tutorials"]
-category: Web Development
-coverImage: https://cdn-public.eesel.ai/b449f812-0061-4442-addb-cf11472cec0d/4218ebea-da6f-46c3-ad0c-a268c2d0bd51/66319f6e0ce64ef9a2c1b573767e3924.png
-coverImageAlt: Flat illustration of a code editor with JavaScript async/await syntax
-coverImageHeight: 1080
-coverImageWidth: 1920
-date: 2026-07-03T00:00:00.000Z
-description: Learn JavaScript async/await from scratch. Understand promises, write clean async code, handle errors, and run requests in parallel - with real examples throughout.
-excerpt: Learn JavaScript async/await from scratch. Understand promises, write clean async code, handle errors, and run requests in parallel - with real examples throughout.
-faqs: {"heading": "Frequently Asked Questions", "type": "blog", "answerType": "html", "faqs": [{"question": "What is async/await in JavaScript?", "answer": "Async/await is a modern JavaScript syntax that makes asynchronous code look and behave like synchronous code. The <code>async</code> keyword marks a function as asynchronous, and <code>await</code> pauses execution inside that function until a Promise resolves. It was introduced in ES2017 and is now supported in all modern browsers. Learn more on <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function'>MDN Web Docs</a>."}, {"question": "Do I need to learn Promises before async/await?", "answer": "Yes - and this guide covers both. Async/await is built on top of Promises, so understanding what a Promise is (and why it exists) makes async/await click much faster. You don't need to master every Promise method, but knowing the basics of <code>.then()</code>, <code>.catch()</code>, and what 'pending,' 'fulfilled,' and 'rejected' mean will save you a lot of debugging time."}, {"question": "What happens if I forget to use await?", "answer": "You get a Promise object instead of the actual value. For example, <code>const data = fetchData()</code> gives you <code>Promise { &lt;pending&gt; }</code>, not the data you expected. This is one of the most common beginner mistakes. Always <code>await</code> async function calls when you need the resolved value, and use <code>try/catch</code> to handle any errors that come back."}, {"question": "When should I use Promise.all vs sequential await?", "answer": "Use <code>Promise.all()</code> when your operations are independent and can run at the same time - for example, fetching user data and product data simultaneously. Use sequential <code>await</code> when each step depends on the result of the previous one - for example, fetching a user ID first and then using that ID to fetch their orders. Running independent tasks sequentially wastes time; <code>Promise.all()</code> runs them in parallel."}, {"question": "Is async/await supported in all browsers?", "answer": "Yes. Async/await has been supported in all major browsers since 2017, including Chrome 55+, Firefox 52+, Safari 10.1+, and Edge 15+. For Node.js, it is available from version 7.6 onward. You can safely use async/await in any modern project without a transpiler, though older codebases using Babel may still compile it to Promise chains for broader compatibility."}], "supportLink": null}
-is_primary_artifact: True
-locale: en
-readTime: 12 min
-reviewer: 4
-run_id: 54ca6faa-7d52-4f6c-8732-b1de7267a32a
-seo: {"title": "JavaScript async/await explained: a beginner's complete guide (2026)", "description": "Learn JavaScript async/await from scratch. Understand promises, write clean async code, handle errors with try/catch, and run requests in parallel.", "image": "https://cdn-public.eesel.ai/b449f812-0061-4442-addb-cf11472cec0d/4218ebea-da6f-46c3-ad0c-a268c2d0bd51/66319f6e0ce64ef9a2c1b573767e3924.png"}
-skill: blog
-slug: javascript-async-await-explained
+title: "JavaScript async/await explained: a beginner's complete guide"
+description: "Learn JavaScript async/await from scratch. Understand promises, write clean async code, handle errors with try/catch, and run requests in parallel."
+date: 2026-07-03
 tags: ["javascript", "async-await", "promises", "web-development"]
-task_id: 505c6f3b-9219-461f-909e-595e421e91a1
-template: default
-title: JavaScript async/await explained: a beginner's complete guide
-updated: 2026-07-03
+category: "Web Development"
+readTime: "12 min read"
 ---
+
 ## TL;DR
 
 JavaScript runs one thing at a time. When you need to fetch data from an API, read a file, or do anything that takes time, you need asynchronous code - code that can wait without freezing everything else. Async/await is the modern, readable way to write it. You mark a function with `async`, use `await` before any operation that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), and JavaScript handles the waiting. Wrap it in `try/catch` for error handling, and use `Promise.all()` when you want multiple things running at the same time. By the end of this guide, you will understand why async/await exists, how to use it, and the five mistakes most beginners make.
