@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://ai-tools-blog-blush.vercel.app',
+  trailingSlash: 'never',
   markdown: {
     shikiConfig: {
       theme: "one-dark-pro",
